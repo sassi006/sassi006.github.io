@@ -5,10 +5,8 @@ document.querySelectorAll('.image-scroll').forEach(carousel => {
 
   let current = 0;
 
-  // Mark first image active
   images[0].classList.add('active');
 
-  // Create prev/next buttons
   const prev = document.createElement('button');
   prev.className = 'carousel-btn prev';
   prev.innerHTML = '&#8592;';
@@ -17,7 +15,6 @@ document.querySelectorAll('.image-scroll').forEach(carousel => {
   next.className = 'carousel-btn next';
   next.innerHTML = '&#8594;';
 
-  // Create dots
   const dotsContainer = document.createElement('div');
   dotsContainer.className = 'carousel-dots';
   images.forEach((_, i) => {
@@ -34,7 +31,6 @@ document.querySelectorAll('.image-scroll').forEach(carousel => {
   carousel.appendChild(next);
   carousel.appendChild(dotsContainer);
 
-  // Hide buttons if only one image
   if (images.length === 1) {
     prev.style.display = 'none';
     next.style.display = 'none';
@@ -59,9 +55,9 @@ document.querySelectorAll('.image-scroll').forEach(carousel => {
     goTo(current + 1);
   });
 
-  // Open lightbox on image click
+  // Open lightbox, passing this carousel's images and current index
   carousel.addEventListener('click', () => {
-    openLightbox(images[current].src);
+    openLightbox(images, current);
   });
 });
 
@@ -69,24 +65,60 @@ document.querySelectorAll('.image-scroll').forEach(carousel => {
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const lightboxClose = document.getElementById('lightbox-close');
+const lightboxPrev = document.getElementById('lightbox-prev');
+const lightboxNext = document.getElementById('lightbox-next');
 
-function openLightbox(src) {
-  lightboxImg.src = src;
+let lightboxImages = [];
+let lightboxIndex = 0;
+
+function openLightbox(images, startIndex) {
+  lightboxImages = Array.from(images);
+  lightboxIndex = startIndex;
+  updateLightboxImage();
   lightbox.classList.add('open');
+
+  // Hide arrows if only one image
+  const single = lightboxImages.length === 1;
+  lightboxPrev.style.display = single ? 'none' : '';
+  lightboxNext.style.display = single ? 'none' : '';
 }
+
+function updateLightboxImage() {
+  lightboxImg.src = lightboxImages[lightboxIndex].src;
+}
+
+lightboxPrev.addEventListener('click', (e) => {
+  e.stopPropagation();
+  lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+  updateLightboxImage();
+});
+
+lightboxNext.addEventListener('click', (e) => {
+  e.stopPropagation();
+  lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
+  updateLightboxImage();
+});
 
 lightboxClose.addEventListener('click', () => {
   lightbox.classList.remove('open');
 });
 
-// Close on click outside image
 lightbox.addEventListener('click', (e) => {
   if (e.target === lightbox) {
     lightbox.classList.remove('open');
   }
 });
 
-// Close on Escape key
+// Keyboard navigation
 document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('open')) return;
   if (e.key === 'Escape') lightbox.classList.remove('open');
+  if (e.key === 'ArrowLeft') {
+    lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+    updateLightboxImage();
+  }
+  if (e.key === 'ArrowRight') {
+    lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
+    updateLightboxImage();
+  }
 });
