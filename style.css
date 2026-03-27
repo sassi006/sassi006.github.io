@@ -126,10 +126,10 @@ section > p {
 .image-scroll {
   position: relative;
   flex: 1;
+  max-width: 600px;
   overflow: hidden;
   border-radius: 6px;
   min-height: 320px;
-  background-color: #1a1a1a;
   cursor: pointer;
 }
 
