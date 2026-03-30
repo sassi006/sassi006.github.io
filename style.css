@@ -84,8 +84,66 @@ section h2 {
 section > p {
   font-size: 1rem;
   opacity: 0.6;
-  max-width: 640px;
+  max-width: 850px;
   margin-bottom: 48px;
+}
+
+/* ── HERO LINKS ── */
+.hero-links {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.hero-links a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.hero-links a:hover {
+  opacity: 1;
+}
+
+.hero-links i {
+  font-size: 1.1rem;
+}
+
+/* ── ABOUT ── */
+#about p {
+  max-width: 950px;
+  margin-bottom: 16px;
+  opacity: 0.8;
+  line-height: 1.8;
+}
+
+#about p:last-of-type {
+  margin-bottom: 32px;
+}
+
+.about-links {
+  display: flex;
+  gap: 24px;
+}
+
+.about-links a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.about-links a:hover {
+  opacity: 1;
+}
+
+.about-links i {
+  font-size: 1.1rem;
 }
 
 /* ── PROJECT CARDS ── */
