@@ -181,7 +181,16 @@ section > p {
   line-height: 1.7;
 }
 
+.project-title h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
 .project-description p {
+  font-size: 0.95rem;
+  opacity: 0.65;
+  line-height: 1.7;
   text-indent: 1.5em;
 }
 
@@ -310,4 +319,61 @@ section > p {
   opacity: 1;
 }
 
-/* comment */
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+
+  /* Navigation */
+  nav {
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    padding: 12px 20px;
+  }
+
+  /* Hero */
+  #hero {
+    padding: 48px 20px;
+  }
+
+  #hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero-links {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* Sections */
+  section {
+    padding: 40px 20px;
+  }
+
+  /* Cards */
+  .project-card {
+    width: 100%;
+    gap: 16px;
+  }
+
+  /* Carousel */
+  .image-scroll {
+    min-height: 260px;
+    max-width: 100%;
+  }
+
+  /* Always show carousel buttons on mobile (no hover) */
+  .image-scroll .carousel-btn {
+    opacity: 0.7;
+  }
+
+  /* Lightbox buttons always visible on mobile */
+  #lightbox .carousel-btn {
+    opacity: 0.7;
+  }
+
+  /* About links */
+  .about-links {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+}

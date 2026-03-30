@@ -55,10 +55,26 @@ document.querySelectorAll('.image-scroll').forEach(carousel => {
     goTo(current + 1);
   });
 
-  // Open lightbox, passing this carousel's images and current index
+  // Open lightbox on click (not after swipe)
   carousel.addEventListener('click', () => {
-    openLightbox(images, current);
+    if (!carousel._swiped) openLightbox(images, current);
   });
+
+  // Touch swipe support for carousel
+  let touchStartX = 0;
+  carousel.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    carousel._swiped = false;
+  }, { passive: true });
+
+  carousel.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      carousel._swiped = true;
+      goTo(diff > 0 ? current + 1 : current - 1);
+    }
+  }, { passive: true });
+
 });
 
 // ── LIGHTBOX ──
@@ -77,7 +93,6 @@ function openLightbox(images, startIndex) {
   updateLightboxImage();
   lightbox.classList.add('open');
 
-  // Hide arrows if only one image
   const single = lightboxImages.length === 1;
   lightboxPrev.style.display = single ? 'none' : '';
   lightboxNext.style.display = single ? 'none' : '';
@@ -108,6 +123,22 @@ lightbox.addEventListener('click', (e) => {
     lightbox.classList.remove('open');
   }
 });
+
+// Touch swipe support for lightbox
+let lightboxTouchStartX = 0;
+lightbox.addEventListener('touchstart', (e) => {
+  lightboxTouchStartX = e.touches[0].clientX;
+}, { passive: true });
+
+lightbox.addEventListener('touchend', (e) => {
+  const diff = lightboxTouchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) {
+    lightboxIndex = diff > 0
+      ? (lightboxIndex + 1) % lightboxImages.length
+      : (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+    updateLightboxImage();
+  }
+}, { passive: true });
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
