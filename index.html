@@ -24,51 +24,72 @@
     <!-- SECTION: 3D PRINTING -->
     <section id="printing">
       <h2>3D Printing</h2>
-      <p>Whether the end goal is beauty, functionality, or a little bit of both</p>
+      <p>Whether the end goal is beauty, functionality, or a little bit of both, these projects all showcase a keen attention to structural integrity, dimensional accuracy, and ease of manufacturing.</p>
 
       <!-- CARD: Hard Surface -->
       <div class="project-card">
-        <div class="project-info">
+        <div class="project-title">
           <h3>Hard Surface Modeling</h3>
-          <p>Project description goes here. Explain the goal, your process, and anything interesting you solved.</p>
         </div>
         <div class="image-scroll">
           <img src="images/Rein_Comparison.jpg" alt="Hard surface model" />
+        </div>
+        <div class="project-description">
+          <p>This large resin 3D printed statue of a robotic character is a showcase of hard surface modeling fundamentals. With 19 interlocking parts and a highly mechanical design,
+             the project demanded clean topology and a disciplined subdivision surface workflow — every edge loop placed with intention so that curves and creases behave predictably at any subdivision level.</p>
+          <p>The skills demonstrated here extend well beyond figurines. The same principles that make this robot's armor panels and joints read clearly at print scale are directly applicable to product visualization,
+             industrial design, and medical device renders — any context where precise, manufacturable geometry and clean silhouettes are non-negotiable.</p>
+          <p>One of the more technically demanding aspects of the project was managing a large stack of boolean modifiers in Blender to split the model into printable parts.
+             Booleans at this scale can quickly destabilize a scene, so a careful, non-destructive workflow was essential to keep the system stable and the geometry clean throughout the process.</p>
         </div>
       </div>
 
       <!-- CARD: Sculpting -->
       <div class="project-card">
-        <div class="project-info">
+        <div class="project-title">
           <h3>Sculpting</h3>
-          <p>Project description goes here.</p>
         </div>
         <div class="image-scroll">
           <img src="images/Alma_comparison.jpg" alt="Sculpt" />
+        </div>
+        <div class="project-description">
+          <p>This character statue pushed the boundaries of what's possible with consumer resin printing. Modeled in Blender and refined in ZBrush,
+             the piece presented a unique challenge in balancing organic form with intricate surface detail.</p>
+            <p>Due to the nature of 3D printing all surface detail must use real geometry, rather than faked detail such as normal maps. Examples of this include the jacket, which features a complex mural-like pattern that was digitally hand painted and applied as a height map.
+               Another example is the scarf, whose height map was derived entirely from real geometry — individual strands were modeled and arrayed into fabric, with the depth channel rendered out and converted into a tileable texture. This geometry-first approach to texture
+              creation ensures the surface detail holds up at any scale.</p>
+              <p> To make the model printable on an Elegoo Saturn S, the character was split into
+              15 interlocking parts in Chitubox, with supports placed deliberately to avoid leaving marks on any visible surface — a process that requires
+              both technical foresight and a deep understanding of how resin printing behaves. The result is a seamless, paintable figure that bridges the
+              gap between digital art and physical fabrication.</p>
         </div>
       </div>
 
       <!-- CARD: Functional Parts -->
       <div class="project-card">
-        <div class="project-info">
+        <div class="project-title">
           <h3>Functional Parts</h3>
-          <p>Project description goes here.</p>
         </div>
         <div class="image-scroll">
           <img src="images/DPadMod_combined.jpg" alt="Functional part" />
           <img src="images/FigureStand_combined.jpg" alt="Functional part" />
           <img src="images/SidorakHead_comparison.jpg" alt="Functional part" />
         </div>
+        <div class="project-description">
+          <p>Project description goes here.</p>
+        </div>
       </div>
 
       <!-- CARD: Jewelry -->
       <div class="project-card">
-        <div class="project-info">
+        <div class="project-title">
           <h3>Jewelry</h3>
-          <p>Project description goes here.</p>
         </div>
         <div class="image-scroll">
           <img src="images/LadybugEarrings_comparison.jpg" alt="Jewelry" />
+        </div>
+        <div class="project-description">
+          <p>Project description goes here.</p>
         </div>
       </div>
 
@@ -79,15 +100,16 @@
       <h2>Game-Ready Assets</h2>
       <p>Section description goes here.</p>
 
-      <!-- Add project cards here as needed -->
       <div class="project-card">
-        <div class="project-info">
+        <div class="project-title">
           <h3>Project Title</h3>
-          <p>Project description goes here.</p>
         </div>
         <div class="image-scroll">
           <img src="images/Lungs_comparison.jpg" alt="Game asset" />
           <img src="images/TriThruster_combined.jpg" alt="Game asset" />
+        </div>
+        <div class="project-description">
+          <p>Project description goes here.</p>
         </div>
       </div>
 
@@ -99,35 +121,39 @@
       <p>Section description goes here.</p>
 
       <div class="project-card">
-        <div class="project-info">
+        <div class="project-title">
           <h3>Character Name / Title</h3>
-          <p>Project description goes here.</p>
         </div>
         <div class="image-scroll">
           <img src="images/GaliArt_full.jpg" alt="Character" />
         </div>
+        <div class="project-description">
+          <p>Project description goes here.</p>
+        </div>
       </div>
 
       <div class="project-card">
-        <div class="project-info">
+        <div class="project-title">
           <h3>2D/3D Mixed Media</h3>
-          <p>Project description goes here.</p>
         </div>
         <div class="image-scroll">
           <img src="images/Evelyn.jpg" alt="Character" />
         </div>
+        <div class="project-description">
+          <p>Project description goes here.</p>
+        </div>
       </div>
 
     </section>
-    
-   <!-- LIGHTBOX -->
+
+    <!-- LIGHTBOX -->
     <div id="lightbox">
       <button id="lightbox-close">&times;</button>
       <button class="carousel-btn prev" id="lightbox-prev">&#8592;</button>
       <img id="lightbox-img" src="" alt="Enlarged view" />
       <button class="carousel-btn next" id="lightbox-next">&#8594;</button>
     </div>
-    
+
     <script src="carousel.js"></script>
 
   </body>

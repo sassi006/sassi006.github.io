@@ -91,12 +91,13 @@ section > p {
 /* ── PROJECT CARDS ── */
 .project-card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: 80%;
   gap: 32px;
   margin-bottom: 48px;
   padding-bottom: 48px;
   border-bottom: 1px solid #1e1e1e;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 .project-card:last-child {
@@ -106,7 +107,7 @@ section > p {
 }
 
 .project-info {
-  flex: 0 0 280px;
+  /*flex: 0 0 280px;*/
   padding-top: 8px;
 }
 
@@ -122,14 +123,22 @@ section > p {
   line-height: 1.7;
 }
 
+.project-description p {
+  text-indent: 1.5em;
+}
+
+.project-description p + p {
+  margin-top: 12px;
+}
+
 /* ── CAROUSEL ── */
 .image-scroll {
   position: relative;
   flex: 1;
-  max-width: 600px;
+  max-width: 960px;
   overflow: hidden;
   border-radius: 6px;
-  min-height: 320px;
+  min-height: 540px;
   cursor: pointer;
 }
 
